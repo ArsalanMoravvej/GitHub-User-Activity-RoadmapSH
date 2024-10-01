@@ -12,6 +12,9 @@ def print_output(data):
 
 
 def get_GitHub_data(username):
+    """
+    getting data
+    """
     response = requests.get(f'https://api.github.com/users/{username}/events')
     print(response.status_code)
     if response.status_code == 200:
