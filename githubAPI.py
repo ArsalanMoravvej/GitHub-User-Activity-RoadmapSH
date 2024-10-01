@@ -4,7 +4,12 @@ import argparse
 
 
 def print_output(data):
-    pass
+    """
+    iterate and print results
+    """
+    for i,item in enumerate(data):
+        print(i, item['created_at'].split('T'), item['type'], item['repo']['name'].split('/')[1])
+
 
 def get_GitHub_data(username):
     response = requests.get(f'https://api.github.com/users/{username}/events')
@@ -35,10 +40,9 @@ def main():
     # terminate if not valid
     if not results: return
 
-    # iterating results
-    for i,item in enumerate(results):
-        print(i, item['created_at'].split('T'), item['type'], item['repo']['name'].split('/')[1])
-
+    # print results
+    print_output(results)
+    
 
 if __name__ == '__main__':
     main()
